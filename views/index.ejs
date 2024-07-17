@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test Node.js</title>
+    <link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+   <h1>COCKTAILS</h1>
+
+   <form action="search" method="post">
+    <div class="search">
+        <!-- <textarea name="txtSearch" id="maintext"></textarea> -->
+        <input type="text" name="txtSearch" id="maintext" >
+    </div>
+    <div class="btnDiv"> 
+        <input type="submit" value="Search cocktail by name" name="clicked">
+        <input type="submit" value="Search With First Letter" name="clicked">
+        <input type="submit" value="Search by ingredient" name="clicked">
+        <input type="submit" value="Lookup full cocktail details by id" name="clicked">
+    </div>
+   </form>
+  
+   <% if (locals.content) { %>
+    <% let data =content.length %>
+       <% for (let i = 0; i < data; i++) {   %>
+           <div class="card">
+               <img class="image" src=<%= content[i].strDrinkThumb %> alt=<%= content[i].strDrinkThumb %> style="width:100%">
+               <div class="container">
+                 <h4><b><%= content[i].strDrink %></b></h4> 
+                 <p><%= content[i].strCategory %></p> 
+               </div>
+             </div>
+       <% } %>
+   <%} else {%>
+    <div class="nodata">No data. Try agin</div>
+   <%}%>
+</body>
+</html>
